@@ -1,0 +1,139 @@
+<ui:composition template="/WEB-INF/templates/layout.xhtml"
+     xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+      
+<ui:define name="titulo">Cadastro de Servidores</ui:define>
+
+
+	<ui:define name="content">
+		<p:panel id="cad_servidores" header="Cadastro de Servidores"  style="margin-bottom:20px; margin-right: 5px;" >
+		
+		<h:form id="frm-servidores">
+		<!-- <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" /> -->
+		
+		 <p:messages id="msgs" showDetail="true" closable="true">
+        		<p:autoUpdate />
+   		  </p:messages>
+		
+		 <!-- Campos que nao aparecem - hidden -->
+		  <h:inputHidden value="#{servidorBean.servidor.codigo}"/>
+   		  <h:inputHidden value="#{servidorBean.servidor.ativo}" />
+   		
+   		  <h:inputHidden value="#{servidorBean.servidor.dataAlt}">
+   				<f:convertDateTime dateStyle="medium"/>
+  		  </h:inputHidden>
+  		 
+   			<h:inputHidden value="#{servidorBean.servidor.dataCad}">
+   				<f:convertDateTime dateStyle="medium"/>
+   	  		</h:inputHidden>
+   	  		<h:inputHidden value="#{servidorBean.destinoSalvar}"/>
+		 
+		<!-- Barra de botoes -->
+		<p:toolbar>
+			<p:toolbarGroup>
+				<p:commandButton value="Salvar" icon="fa fa-save"  action="#{servidorBean.salvar}"  update="@form msgs"/>
+				
+			</p:toolbarGroup>
+			
+			<p:toolbarGroup align="right">
+				
+				<p:button value="Pesquisa" outcome="pesquisaservidor"  icon="fa fa-search"/>
+			
+			</p:toolbarGroup>
+		
+		</p:toolbar>
+		<p:panelGrid columns="4" layout="grid"
+			columnClasses="ui-grid-col-1, ui-grid-col-4, ui-grid-col-1, ui-grid-col-4"
+			styleClass="panelgrid-noborder">
+			
+			    <p:outputLabel value="Matricula" for="matricula"/>
+				<p:inputText style="width:70%;" id="matricula" placeholder="Matricula do servidor"  value="#{servidorBean.servidor.matricula}"
+           			     maxlength="45" required="true" requiredMessage="Digite a matricula do servidor" converterMessage="Matricula é um Campo númerico">            		
+           			    <f:convertNumber integerOnly="true"    />
+                        <f:convertNumber pattern="####################" maxFractionDigits="0"/> 
+           				 
+        		 </p:inputText>
+        		  
+		    	
+				
+				<p:outputLabel value="Nome" for="nome"/>
+				<p:inputText  converter="upperCaseConverter" placeholder="Nome completo do servidor" style="width:100%;" id="nome" label="Nome" value="#{servidorBean.servidor.nome}"
+           			 maxlength="50" required="true" requiredMessage="Digite o nome do servidor">            		
+           				 <f:validateLength minimum="3" maximum="50"/>
+           				 <f:converter converterId="upperCaseConverter"/>
+        		 </p:inputText>
+		
+				<p:outputLabel value="Endereço" for="endereco"/>
+				<p:inputText converter="upperCaseConverter"  id="endereco" label="Endereço" value="#{servidorBean.servidor.endereco}" style="width:100%"  placeholder="Rua, quadra, lote..."
+					maxlength="60" required="true" requiredMessage="Você não tem endereço?">
+						<f:validateLength minimum="3" maximum="60"/>
+						<f:converter converterId="upperCaseConverter"/>
+				</p:inputText>  
+		
+				<p:outputLabel value="Cidade" for="cidade"/>
+				<p:inputText converter="upperCaseConverter" style="width:100%;" placeholder="Digite a cidade" id="cidade" label="Cidade" value="#{servidorBean.servidor.cidade}"
+					maxlength="60" required="true" requiredMessage="Você não tem Cidade?" >
+						<f:validateLength minimum="2" maximum="60"/>
+						<f:converter converterId="upperCaseConverter"/>
+				</p:inputText>
+				
+				<p:outputLabel value="UF" for="uf"/>
+				<p:selectOneMenu id="uf" value="#{servidorBean.servidor.uf}" style="width:100%" required="true" requiredMessage="Você não tem UF">
+       		     				 		 <f:selectItem itemLabel="UF" itemValue="" />
+       		     				 	  	<f:selectItem itemLabel="AC" itemValue="AC" />
+       		     				 		 <f:selectItem itemLabel="AL" itemValue="AL" />
+       		     				 		 <f:selectItem itemLabel="AM" itemValue="AM" />
+       		     				 		 <f:selectItem itemLabel="MA" itemValue="MA" />
+       		     				 		 <f:selectItem itemLabel="PA" itemValue="PA" />
+       		     				 		 <f:selectItem itemLabel="GO" itemValue="GO" />
+       		     				 		 <f:selectItem itemLabel="TO" itemValue="TO" />
+       		     				 
+       		    </p:selectOneMenu>
+				
+				
+				<p:outputLabel value="Telefone" for="telefone"/>
+				<p:inputMask id="telefone" style="width:50%;" placeholder="Telefone atual" label="Telefone" value="#{servidorBean.servidor.telefone}"
+					mask="(99)99999-9999" required="true"  requiredMessage="Você não tem telefone?" />
+		
+		
+				<p:outputLabel value="Unidade" for="unidade"/>
+				<p:selectOneMenu id="unidade" value="#{servidorBean.unidade}" style="width:100%" required="true" requiredMessage="Você não tem Unidade?">
+       		     				 		<f:selectItem itemLabel="SELECIONE UMA UNIDADE" itemValue="" />
+       		     				 		<f:selectItems value="#{servidorBean.lista_unidades}" var="unidade" 
+       		     				 		itemLabel="#{unidade.nome}" itemValue="#{unidade}"/>
+       		     				 		
+       		     				 
+       		     </p:selectOneMenu>
+		
+				 <p:outputLabel value="Função" for="funcao"/>
+				 <p:selectOneMenu id="funcao" value="#{servidorBean.servidor.funcao}" style="width:100%" >
+       		     				 		 <f:selectItem itemLabel="SELECIONE UMA FUNÇÃO" itemValue="" />
+       		     				 		 <f:selectItem itemLabel="CORDENADOR" itemValue="COORDENADOR" />
+       		     				 		 <f:selectItem itemLabel="ADMINISTRADOR" itemValue="ADMINISTRADOR" />
+       		     				 		 <f:selectItem itemLabel="AGENTE SOCIOEDUCATIVO" itemValue="AGENTE SOCIOEDUCATIVO" />
+       		     				 		 <f:selectItem itemLabel="ENFERMEIRA PADRÃO" itemValue="ENFERMEIRA" />
+       		     				 		 <f:selectItem itemLabel="TÉC. DE ENFERMAGEM" itemValue="TÉC ENFERMAGEM" />
+       		     				 		 <f:selectItem itemLabel="MOTORISTA" itemValue="MOTORISTA" />
+       		     				 		
+       		     				 
+       		     </p:selectOneMenu>
+       		     
+       		     <p:outputLabel value="Senha" for="senha"/>
+       		     <p:password  id="senha" style="width:50%;" placeholder="*********" label="Senha" value="#{servidorBean.servidor.senha}"
+				    maxlength="100" required="true" requiredMessage="Digite sua senha?" />
+				    
+				    <p:outputLabel value="Confirmar Senha" for="confsenha"/>
+       		     <p:password  id="confsenha" style="width:50%;" placeholder="*********" label="Senha" value="#{servidorBean.confirmaSenha}"
+				    maxlength="100" required="true" requiredMessage="Confirme  sua senha?" />
+	   			
+		
+		
+		</p:panelGrid>
+		
+   		 </h:form>
+   	    </p:panel>
+    </ui:define>
+</ui:composition>

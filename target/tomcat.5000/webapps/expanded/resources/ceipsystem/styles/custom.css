@@ -1,0 +1,41 @@
+/*Estilização geral*/
+body{
+	margin: 0px;
+	font-size: 13px;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+
+.ui-menu.ui-widget {
+
+    border-right: 1px solid #eaeaea;
+	box-shadow: 3px 0px 5px #ccc;
+	box-shadow: 3px 0px 5px #ccc;
+	background-color: #f6f6f6;
+	
+
+}
+
+/*Tirar a borda do panelgrid*/
+.ui-panelgrid.panelgrid-noborder .ui-grid-responsive{
+	border: none;
+	margin-top: 10px;
+}
+
+@media (max-width: 640px){
+	.ui-panelgrid.panelgrid-noborder .ui-grid-responsive .ui-grid-row{
+	border: none;
+	}
+}
+
+body .ui-menu.ui-menu-toggleable .ui-menu-list .ui-widget-header{
+	
+	background-color: #116FBF;
+	
+}
+
+.ui-menu.ui-menu-toggleable li.ui-widget-header h3 {
+	color: #fff;
+	}
+
+

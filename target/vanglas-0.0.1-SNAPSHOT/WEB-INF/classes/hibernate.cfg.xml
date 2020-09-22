@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+  
+    	<property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>	
+    	<property name="connection.driver_class">org.postgresql.Driver</property>
+       	 <property name="connection.url">jdbc:postgresql://localhost:5432/db_sysceip2</property>
+    	
+    	
+    	<property name="connection.username">postgres</property>
+    	<property name="connection.password">131603</property>
+    	<property name="current_session_context_class">thread</property>
+    	<property name="hibernate.hbm2ddl.auto">update</property>
+    	  <!--  
+    	
+    	<property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>	
+    	<property name="connection.driver_class">org.postgresql.Driver</property>
+       	 <property name="connection.url">postgres://ec2-52-73-247-67.compute-1.amazonaws.com:5432/d9dbf1j2lsqguk</property>
+    	
+    
+    	<property name="connection.username">lghlmxthkybhqe</property>
+    	<property name="connection.password">11a885f2715d8dad0db535b15cb9d1481acdd492fa7b1e632ea9daa3a1b792c0</property> -->
+    	
+    	
+    	<property name="current_session_context_class">thread</property>
+    	<property name="hibernate.hbm2ddl.auto">update</property>
+    	
+    	<!-- Mapeando as classes -->
+    	<mapping class="br.com.vanglas.unidade.Unidade"/>
+    	<mapping class="br.com.vanglas.servidor.Servidor"/>
+    </session-factory>
+</hibernate-configuration>

@@ -1,0 +1,231 @@
+/* TOPBAR */
+.pr-topbar {
+	position: fixed; /*top bar ele vai ficar sempre fixo*/
+	top: 0;
+	right: 0;
+	left: 0;
+	min-height: 50px;
+	background-image: url("../images/quadrados_azuis6.png.jsf?ln=ceipsystem");
+	background-repeat:  no-repeat;
+	background-size: cover;
+	z-index: 9998; /*Evitar elementos acima desse topo*/
+	   
+	
+}
+
+.pr-topo-esquerdo{
+
+	float: left;
+	
+		
+}
+
+.pr-topo-esquerdo > img{
+	width: 150px;
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+	
+	
+}
+.pr-topo-direito{
+	float: left;
+	background-repeat: no-repeat;
+	min-height: auto;
+	background-size: 100% 100%;
+	color: #fff;
+	text-align: left;
+	
+	
+}
+
+
+.pr-topo-direito > p{
+	float: right; /*Flutua a direita*/
+	color: #fff;
+	font-weight: 600;
+	margin-top:-75px;
+	font-size: 1.3em;
+	margin-right: 40px;
+	
+	
+    
+}
+.pr-topo-direito > h1{
+	font-size: 1.9em;
+}
+.pr-topo-direito > h2{
+	font-size: 1.1em;
+}
+.pr-topo-direito > h3{
+	font-size: 0.8em;
+}
+
+.pr-topo-direito > p{
+	font-size: 0.9em;
+}
+
+
+
+
+/*Side Bar*/
+
+.pr-sidebar{
+	position: fixed;
+	top:165px;
+	bottom: 0;
+	left:0;
+	width:188px;
+	margin-left: -211px;           /*Isso fara ela sumir, e aparecerá no media query*/
+	z-index: 9997; 
+	transition: margin-left 0.5s; /*Faz a transição ser mais suave*/
+	overflow: auto; /*Barra de rolagem para essa barra lateral, caso haja muitos itens de menu*/
+	border-right: 0px solid #eaeaea;
+	box-shadow: 3px 0px 10px #ccc;
+	border-top-right-radius: 15px;
+	background-color: #f6f6f6;
+	
+	
+}
+
+.pr-menu{
+	width: 100%;
+	
+}
+
+.pr-msg{
+	z-index: 9999;
+	top: 1000px;
+}
+
+
+/*Conteudo*/
+.pr-content{
+	padding: 0 1px; /*0 em cima e embaixo e 15 esquerdo e direito*/
+	margin-top: 170px; /*Começa em 50 pra ficar abaixo do topo*/
+	transition: margin-left 0.5s; /*Faz a transição ser mais suave*/
+	background-color: rgb(255, 255, 255);
+}
+
+
+
+@media (max-width: 640px){
+	
+	.pr-sidebar{
+		margin-top: 95px;
+	}
+	
+	.pr-content{
+	margin-top: 268px;
+	margin-left: 5px;
+	}
+	
+}
+
+
+
+@media (min-width: 960px){
+	
+	.pr-sidebar{
+		margin-left: 0px;
+		padding-left: 1px;
+	}
+	
+}
+
+.pr-sidebar.is-toggle{
+	margin-left: 0px; /*Quando tiver as duas a margem vai pra 0  e ele aparece*/
+
+}
+
+
+@media (min-width: 960px){
+	.pr-content{
+		margin-left: 195px; /*Dessa forma quando a tela tiver mais de 960px o conteudo vai para 195x e aparece acima do menu*/
+		
+	}
+	
+	/*quando a tela tiver grande
+	  a sidebar vai sumir se clicar no botao
+	*/
+	.pr-sidebar.is-toggle{
+		margin-left: -211px;
+	}
+	
+	.pr-content.is-toggle{
+		margin-left: 5px;
+	}
+}
+
+@media (min-width: 1000px){
+	
+	.pr-topo-direito > h1{
+	font-size: 2.1em;
+	}
+	
+	
+	.pr-topo-direito > h2{
+		font-size: 1.3em;
+	}
+	
+	.pr-topo-direito > h3{
+	font-size: 1.0em;
+}
+
+.pr-topo-direito > p{
+	font-size: 1.2em;
+}
+	
+}
+
+@media (max-width: 920px){
+	
+	.pr-topo-direito > h1{
+	font-size: 1.8em;
+	}
+	
+	.pr-topo-direito > h2{
+		font-size: 0.9em;
+	}
+	
+	.pr-topo-direito > p{
+	font-size: 0.7em;
+}
+	
+}
+
+@media (max-width: 876px){
+	
+	.pr-topo-direito > h1{
+	font-size: 1.6em;
+	}
+	
+	
+}
+
+@media (max-width: 807px){
+	
+	.pr-topo-direito > h1{
+	font-size: 1.3em;
+	}
+	
+	
+	
+}
+
+#mn{
+	float: right; /*Flutua a direita*/
+	font-size: 2.1em;
+	font-weight: 600;
+	padding-left: 10px;
+	margin-top:-80px;
+	color: #fff;
+	margin-right: 5px;
+}
+
+
+	
+	
+
+

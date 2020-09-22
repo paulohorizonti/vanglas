@@ -1,0 +1,92 @@
+<ui:composition template="/WEB-INF/templates/layout.xhtml"
+     xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+      
+<ui:define name="titulo">Cadastro de Unidades</ui:define>
+
+
+	<ui:define name="content">
+		<p:panel id="cad_unidade" header="Cadastro de unidades"  style="margin-bottom:20px; margin-right: 5px;" >
+		
+		<h:form id="frm-unidade">
+	    <p:messages  id="msgs" autoUpdate="true" closable="true" />
+		
+		
+	<!-- 	 <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" /> -->
+		 <!-- Campos que nao aparecem - hidden -->
+		  <h:inputHidden value="#{unidadeBean.unidade.id}" />
+   		  <h:inputHidden value="#{unidadeBean.unidade.ativo}" />
+   		
+   		  <h:inputHidden value="#{unidadeBean.unidade.dataAlteracao}">
+   				<f:convertDateTime dateStyle="medium"/>
+  		  </h:inputHidden>
+  		 
+   			<h:inputHidden value="#{unidadeBean.unidade.dataCadastro}">
+   				<f:convertDateTime dateStyle="medium"/>
+   	  		</h:inputHidden>
+   	  		<h:inputHidden value="#{unidadeBean.destinoSalvar}"/>
+		 
+		<!-- Barra de botoes -->
+		<p:toolbar>
+			<p:toolbarGroup>
+			
+				<p:commandButton value="Salvar" icon="fa fa-save"  action="#{unidadeBean.salvarVoid}"   update="@form msgs" />
+				
+			</p:toolbarGroup>
+			
+			<p:toolbarGroup align="right">
+				
+				<p:button value="Pesquisa" outcome="pesquisaunidades"  icon="fa fa-search"/>
+			
+			</p:toolbarGroup>
+		
+		</p:toolbar>
+		<p:panelGrid columns="4" layout="grid"
+			columnClasses="ui-grid-col-1, ui-grid-col-4, ui-grid-col-1, ui-grid-col-4"
+			styleClass="panelgrid-noborder">
+				
+				<p:outputLabel value="Unidade" for="nome"/>
+				<p:inputText   placeholder="Nome conhecido da unidade" style="width:100%;" id="nome" label="Nome" value="#{unidadeBean.unidade.nome}"
+           			 maxlength="80">            		
+           				 <f:validateLength minimum="3" maximum="80"/>
+           			
+           				<!-- Foi mudado para toUpperCase no metodo set do modelo <f:converter converterId="upperCaseConverter"/> -->
+        		 </p:inputText>
+		
+				<p:outputLabel value="Endereço" for="endereco"/>
+				<p:inputText  id="endereco" label="Endereço" value="#{unidadeBean.unidade.endereco}" style="width:100%"  placeholder="Rua, quadra, lote..."
+					maxlength="80">
+						<f:validateLength minimum="4" maximum="80"/>
+					
+				</p:inputText>  
+		
+				<p:outputLabel value="Cidade" for="cidade"/>
+				<p:inputText style="width:70%;" placeholder="Digite a cidade" id="cidade" label="Cidade" value="#{unidadeBean.unidade.cidade}"
+					maxlength="45">
+						<f:validateLength minimum="2" maximum="45"/>
+						
+				</p:inputText>  
+		
+				<p:outputLabel value="Telefone" for="telefone"/>
+				<p:inputMask id="telefone" style="width:50%;" placeholder="Telefone fixo" label="Telefone" value="#{unidadeBean.unidade.fone}"
+					 mask="(99)9999-9999"/>
+		
+				<p:outputLabel value="Cordenador" for="cordenador"/>
+				<p:inputText  style="width:100%;" id="cordenador" placeholder="Nome completo do Coordenador" label="Cordenador" value="#{unidadeBean.unidade.cordenador}"
+					maxlength="45">
+					<f:validateLength minimum="3" maximum="45"/>
+					
+	    		</p:inputText>
+	   			
+		
+		
+		</p:panelGrid>
+		
+		
+   		 </h:form>
+   	    </p:panel>
+    </ui:define>
+</ui:composition>

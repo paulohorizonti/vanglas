@@ -1,0 +1,122 @@
+<ui:composition template="/WEB-INF/templates/layout.xhtml"
+     xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+	
+	<ui:define name="titulo">Pesquisa de Unidades</ui:define>
+      
+     <ui:define name="content">
+       
+     	<h:form id="frm-unidade-pesquisa">
+     	
+     		<div id="painel" class="p-grid">
+    		
+    		<p:panel id="basic"  header="Pesquisa de Unidades" style="margin-bottom:20px; height:100%;">
+        	
+		        	<!-- Mensagens -->
+		     		<p:growl id="msgs_pesq" showDetail="true" skipDetailIfEqualsSummary="true" />
+		     	 
+		      		  <!-- Barra de ferramentas e grid dos campos de pesquisa -->
+		       		<p:toolbar style="margin-top: 2px;">
+						<!-- Grupos de barra de ferramentas:Serao duas
+						Uma a direita e outra a esquerda-->
+						<p:toolbarGroup> 
+							<p:commandButton icon="fa fa-search" value="Pesquisar"/>
+						</p:toolbarGroup>
+				
+						<p:toolbarGroup align="right">
+							
+							<p:commandButton icon="fa fa-plus" value="Novo" action="#{unidadeBean.novo}"/>
+						</p:toolbarGroup>
+					</p:toolbar>
+			
+					<!-- Grid dos inputs -->
+					<p:panelGrid  columns="2" id="panel_pesq" style="width:100%; margin-top: 10px;"  styleClass="panelgrid-noborder" layout="grid"
+					columnClasses="ui-grid-col-1, ui-grid-col-4">
+					
+						<p:outputLabel value="Código" for="codigo"/>
+						<p:inputText id="codigo" style="width:50%" size="10"/>
+					
+						<p:outputLabel value="Nome" for="nome"/>
+						<p:inputText id="nome" size="60" style="width:100%"/>
+					
+					</p:panelGrid>
+		     
+     				<!-- Data table -->
+     				<p:dataTable id="unidadesTable" value="#{unidadeBean.lista}" var="unidade"
+						style="margin-top:20px" emptyMessage="Nenhuma Unidade Encontrada" rows="10" paginator="true" paginatorPosition="bottom"
+						paginatorAlwaysVisible="false">
+     					
+     					<f:facet name="header">Listagem de Unidades</f:facet>
+        				<f:facet name="footer">Final da lsitagem</f:facet>
+        				
+        				<p:column headerText="Ativo"  style="text-align: center; width:50px" priority="6">
+							
+							<p:commandLink update="@this" action="#{unidadeBean.ativar}" >
+								<h:graphicImage library="ceipsystem/images" name="ativo_#{unidade.ativo}.png" style="border:0" />
+								<f:setPropertyActionListener  target="#{unidadeBean.unidade}" value="#{unidade}"/>
+							</p:commandLink>
+						
+						</p:column>
+						
+						<p:column headerText="Código" style="text-align:center; width:45px" priority="4">
+							<h:outputText value="#{unidade.id}"/>
+				
+						</p:column>
+					
+						<p:column headerText="Nome" style="text-align:left; width:150px" priority="1">
+							<h:outputText value="#{unidade.nome}"/>
+						</p:column>
+						<p:column headerText="Telefone" style="text-align: center; width:120px;" priority="4">
+							<h:outputText value="#{unidade.fone}"/>
+						</p:column>
+					
+						<p:column headerText="Endereço" style="text-align:left; width:150px;" priority="5">
+							<h:outputText value="#{unidade.endereco}"/>
+						</p:column>
+						<p:column headerText="Cidade" style="text-align: center; width:150px;" priority="5">
+							<h:outputText value="#{unidade.cidade}"/>
+						</p:column>
+						<p:column headerText="Cordenador" style="text-align: center; width:100px;" priority="2">
+							<h:outputText value="#{unidade.cordenador}"/>
+						</p:column>
+						<p:column headerText="Cadastro" style="text-align: center; width:60px" priority="6">
+							<h:outputText value="#{unidade.dataCadastro}">
+							<f:convertDateTime dateStyle="short"/></h:outputText>
+						</p:column>
+						
+						<p:column headerText="Editar" style="text-align: center; width:40px" priority="1">
+							<h:commandLink action="#{unidadeBean.editar()}" >
+								<h:graphicImage library="ceipsystem/images" name="edit_32.png" style="border:0"/>
+								<f:setPropertyActionListener value="#{unidade}" target="#{unidadeBean.unidade}"/>
+								<f:setPropertyActionListener value="/admin/pesquisaunidades" target="#{unidadeBean.destinoSalvar}"/>
+							
+							</h:commandLink>
+						</p:column>
+						
+						<p:column headerText="Excluir" style="text-align: center; width:48px" priority="1">
+							<h:commandLink action="#{unidadeBean.excluir}" onclick="if (!confirm('Confirma a exclusão do registro #{unidade.nome}')) return false;" >
+								<h:graphicImage library="ceipsystem/images" name="excluir_32.png" style="border:0"/>
+								<f:setPropertyActionListener value="#{unidade}" target="#{unidadeBean.unidade}"/>
+							
+							</h:commandLink>
+						</p:column>
+						
+        	
+        			</p:dataTable>
+        	
+        	
+        	
+       	 </p:panel>
+        	
+        </div>
+     	
+      
+     	</h:form>
+     
+     </ui:define>
+      
+      
+</ui:composition>

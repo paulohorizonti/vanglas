@@ -1,0 +1,21 @@
+<ui:composition template="/WEB-INF/templates/layout.xhtml"
+     xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+      
+<ui:define name="titulo">Cadastro de Unidades</ui:define>
+
+
+	<ui:define name="content">
+		<p:panel id="cad_unidade_erro" header="Erro"  style="margin-bottom:20px; margin-right: 5px;" >
+		
+		<h1>Erro ao processar sua requisição.</h1>
+	
+		<h:form>
+		<p:commandButton  value="Voltar" icon="fa fa-thumbs-up" action="#{unidadeBean.novo}"/>
+		</h:form>
+   	    </p:panel>
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<h:head>
+	<f:facet name="first">
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+	</f:facet>
+
+	<title>Controle de Internações</title>
+	<h:outputStylesheet library="primefaces" name="components.css" />
+	<h:outputStylesheet library="ceipsystem" name="styles/custom.css" />
+	<h:outputStylesheet library="ceipsystem" name="styles/layout.css" />
+	<h:outputStylesheet library="ceipsystem" name="styles/components.css" />
+
+	
+	
+	
+	
+	<h:outputScript target="body" library="primefaces" name="jquery/jquery.js"/><!-- Imporntando o Jquery a mao -->
+	<h:outputScript target="body" library="ceipsystem" name="javascripts/app.js"/> <!-- Injeta no fim do body -->
+	
+</h:head>
+
+<h:body>
+
+      <header class="pr-topbar ui-g">
+      		
+	      		<div class="pr-topo-esquerdo ui-lg-2 ui-md-3 ui-g-12 ">
+	      		<p:outputLabel/>
+	      			<h:graphicImage library="ceipsystem" name="images/logo_transp.png" />
+	      		</div>
+      		
+	      		<div class="pr-topo-direito ui-lg-10 ui-md-9 ui-g-12 fundo">
+	      			
+	      			<h1>Controle de internações - CEIP / CASE / USL</h1>
+	      			<h2>Palmas - Gurupi - Araguaína - Santa Fé do Araguaia</h2>
+	      			<h3>Governo do Estado - Tocantins</h3> 
+	      			<p>Usuario logado</p><a href="#" class="pr-toggle js-toggle"><i id="mn" class="fa fa-bars"></i></a>
+	      			
+	      		</div>
+    	
+      </header>
+      
+      <!-- Menu -->
+      <aside class="pr-sidebar js-sidebar">
+		      	<nav class="pr-menu">
+					<h:form id="frm_menu">
+					<p:growl id="messages" showDetail="false"/>
+									
+						<p:menu toggleable="true" style="width: 188px;">
+							<p:submenu label="Cadastros">
+								<p:menuitem value="Servidor"  update="messages" icon="fa fa-fw fa-address-card" action="#{servidorBean.novo}"/>
+								<p:menuitem value="Unidade"  update="messages" icon="fa fa-fw fa-institution" action="#{unidadeBean.novo}"/>
+								<p:menuitem value="Adolescente"  update="messages" icon="fa fa-fw fa-child" />
+							</p:submenu>
+							<p:submenu label="Relatórios">
+								<p:menuitem value="Inclusões"  update="messages" icon="fa fa-fw fa-arrow-right" />
+								<p:menuitem value="Acessos"  update="messages" icon="fa fa-fw fa-unlock" />
+							</p:submenu>
+							<p:submenu label="Lançamentos">
+								<p:menuitem value="Internações"  update="messages" icon="fa fa-fw fa-gears" />
+								
+							</p:submenu>
+							<p:submenu label="Ações">
+								<p:menuitem value="Sair"  update="messages" icon="fa fa-fw fa-close" />
+								<p:menuitem value="Logout"  update="messages" icon="fa fa-fw fa-mail-reply" />
+							</p:submenu>
+						
+						</p:menu>
+					
+					
+					</h:form>
+				
+				</nav>
+		      
+      </aside>
+      
+     <!-- Corpo da página -->
+ 	<section class="pr-content js-content">
+			<ui:insert name="content"/>	  
+	</section>
+      
+     
+	
+</h:body>
+
+</html>

@@ -19,7 +19,7 @@
     	
     	
     	
-    	<!-- Pelo guit linha de comando -->
+    	<!-- Pelo guit linha de comando 
     	<property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>	
     	<property name="connection.driver_class">org.postgresql.Driver</property>
         <property name="connection.url">jdbc:postgresql://ec2-54-86-57-171.compute-1.amazonaws.com:5432/dcq1g90j8klo90</property>
@@ -28,6 +28,10 @@
     	<property name="connection.username">cxeqafugbhgkow</property>
     	<property name="connection.password">e7139238342fd29bbaeae52414f55e1a4bd55cd812878d4ccca2b67879f527fb</property> 
     	
+    	-->
+    		<property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>	
+    	<!-- Referncia ao data source -->
+    	<property name="connection.datasource">java:/comp/env/jdbc/CeipDB</property>
     	
     	<property name="current_session_context_class">thread</property>
     	<property name="hibernate.hbm2ddl.auto">update</property>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context reloadable="true">
+	<Resource name="jdbc/CeipDB" 
+		auth="Container" 
+		type="javax.sql.DataSource"
+		maxActive="8" 
+		maxIdle="30" 
+		maxWait="10000" 
+		username="cxeqafugbhgkow" 
+		password="e7139238342fd29bbaeae52414f55e1a4bd55cd812878d4ccca2b67879f527fb"
+		driverClassName="org.postgresql.Driver"
+		url="jdbc:postgresql://ec2-54-86-57-171.compute-1.amazonaws.com:5432/dcq1g90j8klo90"/>
+</Context>

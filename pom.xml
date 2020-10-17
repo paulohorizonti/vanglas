@@ -85,7 +85,11 @@
     		<name>jvnet-nexus-releases</name>
     		<url>https://maven.java.net/content/repositories/releases/</url>
     	</repository>
-    	
+    	<!-- Atualizado em 17/10/2020 -->
+    	<repository>
+    		<id>org.springframework.security.taglibs.facelets</id>
+    		<url>http://spring-security-facelets-taglib.googlecode.com/svn/repo/</url>
+    	</repository>
     	
     	
     	
@@ -135,6 +139,7 @@
     <groupId>org.postgresql</groupId>
     <artifactId>postgresql</artifactId>
     <version>9.4-1200-jdbc41</version>
+    <scope>provided</scope>
 </dependency>
     	
     	<!-- https://mvnrepository.com/artifact/postgresql/postgresql 
@@ -183,7 +188,25 @@
 			<scope>compile</scope>
 		</dependency>
 
+    	<!-- Spring Security atualizado em 17/10/2020 -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>3.2.6.RELEASE</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>3.2.6.RELEASE</version>
+		</dependency>
     	
+    	<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>3.2.6.RELEASE</version>
+		</dependency>
+    
     	
     </dependencies>
     

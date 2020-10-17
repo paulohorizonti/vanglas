@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/security
+		http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+	<http auto-config="true">
+		<intercept-url pattern="/admin/**" access="ROLE_ADMINISTRADOR, ROLE_USUARIO" />
+		<intercept-url pattern="/restrito/**" access="ROLE_ADMINISTRADOR, ROLE_USUARIO" />
+		<intercept-url pattern="/publico/**" access="ROLE_ADMINISTRADOR, ROLE_USUARIO" />
+		
+		<form-login login-page="/login.jsf"
+			always-use-default-target="true" default-target-url="/publico/home.jsf"
+			authentication-failure-url="/login.jsf?login_error=1" />
+		<logout />
+		<remember-me />
+	</http>
+	<authentication-manager>
+		<authentication-provider>
+			<jdbc-user-service data-source-ref="ceipDataSource" 
+			    users-by-username-query="SELECT ser_matricula, ser_senha, ser_ativo FROM tbl_servidor WHERE ser_matricula = ?" 
+				authorities-by-username-query="SELECT u.ser_matricula, p.per_permissao FROM tbl_servidor u, tbl_permissao p WHERE u.ser_codigo = p.per_servidor AND u.ser_matricula = ?" /> 
+				
+		</authentication-provider>
+	</authentication-manager>
+</beans:beans>

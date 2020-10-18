@@ -7,7 +7,6 @@
 		http://www.springframework.org/schema/security/spring-security-3.2.xsd">
 	<http auto-config="true">
 		<intercept-url pattern="/admin/**" access="ROLE_ADMINISTRADOR, ROLE_USUARIO" />
-		<intercept-url pattern="/restrito/**" access="ROLE_ADMINISTRADOR, ROLE_USUARIO" />
 		<intercept-url pattern="/publico/**" access="ROLE_ADMINISTRADOR, ROLE_USUARIO" />
 		
 		<form-login login-page="/login.jsf"

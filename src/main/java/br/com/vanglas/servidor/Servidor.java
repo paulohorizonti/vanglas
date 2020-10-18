@@ -3,13 +3,9 @@ package br.com.vanglas.servidor;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 import br.com.vanglas.unidade.Unidade;
 
@@ -65,7 +61,14 @@ public class Servidor implements Serializable {
 	private String funcao;
 	
 	
-	
+	@ElementCollection(targetClass = String.class)
+	@JoinTable(
+		name="tbl_permissao",
+		uniqueConstraints = {@UniqueConstraint(columnNames = {"per_servidor", "per_permissao"})},
+		joinColumns = @JoinColumn(name = "usuario"))
+	@Column(name = "per_permissao", length=50)
+	private Set<String> permissao = new HashSet<String>();
+		
 	
 	
 	public Integer getCodigo() {
@@ -136,6 +139,12 @@ public class Servidor implements Serializable {
 	}
 	public String getSenha() {
 		return senha;
+	}
+	public Set<String> getPermissao() {
+		return permissao;
+	}
+	public void setPermissao(Set<String> permissao) {
+		this.permissao = permissao;
 	}
 	public void setSenha(String senha) {
 		this.senha = senha;

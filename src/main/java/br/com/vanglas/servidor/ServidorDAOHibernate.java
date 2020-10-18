@@ -5,6 +5,8 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+
+
 public class ServidorDAOHibernate implements ServidorDAO {
 	
 	 /*Obrigatorio para toda DAOHibernate, é pelo setSession que injetamos a sessao do hibernate
@@ -29,6 +31,12 @@ public class ServidorDAOHibernate implements ServidorDAO {
 
 	@Override
 	public void atualizar(Servidor servidor) {
+		if(servidor.getPermissao() == null || servidor.getPermissao().size() == 0) {
+			Servidor servidorPermissao = this.carregar(servidor.getCodigo());
+			servidor.setPermissao(servidorPermissao.getPermissao());
+			this.session.evict(servidorPermissao);
+		}
+		
 		this.session.update(servidor);
 
 	}

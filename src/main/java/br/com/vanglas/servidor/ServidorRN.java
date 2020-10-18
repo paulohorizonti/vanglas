@@ -42,6 +42,7 @@ public class ServidorRN {
 		
 		/*Verifica o conteudo da variavel*/
 		if(codigo == null || codigo == 0) {
+			servidor.getPermissao().add("ROLE_ADMINISTRADOR");
 			this.servidorDAO.salvar(servidor);
 		}else {
 			this.servidorDAO.atualizar(servidor);//se o codigo vier preenchido quer dizer que é pra alterar (atualizar)

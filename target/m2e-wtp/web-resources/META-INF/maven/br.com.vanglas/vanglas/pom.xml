@@ -14,7 +14,7 @@
             <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.0</version>
-                <configuration>
+                <conf"/home/paulo/Documentos/edital-de-abertura-de-inscria§aµes-ok-20201005110324-1.pdf"iguration>
                     <source>10</source>
                     <target>10</target>
                 </configuration>

@@ -3,7 +3,7 @@
 	<Resource name="jdbc/CeipDB" 
 		auth="Container" 
 		type="javax.sql.DataSource"
-		maxActive="8" 
+		maxActive="100" 
 		maxIdle="30" 
 		maxWait="10000" 
 		username="cxeqafugbhgkow" 
